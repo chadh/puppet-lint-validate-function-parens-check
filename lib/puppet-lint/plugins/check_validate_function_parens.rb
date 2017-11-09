@@ -3,7 +3,7 @@ PuppetLint.new_check(:validate_function_parens) do
     tokens.select { |t|
       t.value =~ /validate_.*/ and t.value !~ /validate_cmd/
     }.each do |token|
-      next if token.type == :COMMENT
+      next if token.type != :NAME
       next if token.next_token.type == :LPAREN
 
       notify(

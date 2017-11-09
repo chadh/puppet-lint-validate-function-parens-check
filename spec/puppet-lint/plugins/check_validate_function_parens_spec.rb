@@ -27,8 +27,15 @@ describe 'validate_function_parens' do
     end
   end
 
-  context 'validate_cmd function' do
+  context 'validate_cmd' do
     let(:code) { "validate_cmd => $foo" }
+    it 'should not detect any problems' do
+      expect(problems).to have(0).problems
+    end
+  end
+
+  context 'non-bareword validate_*' do
+    let(:code) { "'validate_timestamps' => {" }
     it 'should not detect any problems' do
       expect(problems).to have(0).problems
     end
